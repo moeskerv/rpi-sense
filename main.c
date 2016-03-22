@@ -118,7 +118,7 @@ int main(void)
 	DDRC = LED_SDI | LED_CLKR | LED_LE | LED_OE_N;
 	DDRD = 0xFF;
 
-	TCCR0A = (1<<CS12);
+	TCCR0A = (1<<CS02);
 	TWBR = 0xff;
 	TWAR = 0x46 << 1;
 	TWCR = (1 << TWEA) | (1 << TWEN) | (1 << TWINT) | (1 << TWIE);
