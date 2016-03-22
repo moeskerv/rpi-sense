@@ -89,7 +89,7 @@ ldone\reg:
 .func draw_loop
 draw_loop:
 Lframe_loop:
-	CBI	_SFR_IO_ADDR(PORTC), FRAME_INT
+	CBI	_SFR_IO_ADDR(PORTB), FRAME_INT
 	LDI	YL, lo8(pixels)
 	LDI	YH, hi8(pixels)
 	LDI	LINE, 0xFE
@@ -158,7 +158,7 @@ lframeend:
 	SBI	_SFR_IO_ADDR(PORTB), FRAME_INT
 	CBI	_SFR_IO_ADDR(PORTD), 7		; Clear PORTD
 
-	SBI	_SFR_IO_ADDR(PORTB), LED_OE_N	; Scan
+	SBI	_SFR_IO_ADDR(PORTC), LED_OE_N	; LEDs off and start scan
 	LDI	PARAM, 0xF8
 	OUT	_SFR_IO_ADDR(PORTD), PARAM
 	COM	PARAM
@@ -176,7 +176,7 @@ lframeend:
 	OUT	_SFR_IO_ADDR(DDRD), PARAM
 	COM	PARAM
 	OUT	_SFR_IO_ADDR(PORTD), PARAM
-	CBI	_SFR_IO_ADDR(PORTB), LED_OE_N	; /Scan
+	CBI	_SFR_IO_ADDR(PORTC), LED_OE_N	; LEDs on and stop scan
 	RJMP	Lframe_loop
 	RET
 .endfunc
